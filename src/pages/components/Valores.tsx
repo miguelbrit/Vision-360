@@ -55,7 +55,10 @@ export function Valores() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const totalSlides = esencia.length;
+  // En PC: 3 cards por slide = 2 slides (6/3 = 2)
+  // En móvil: 1 card por slide = 6 slides
+  const slidesPerView = isMobile ? 1 : 3;
+  const totalSlides = Math.ceil(esencia.length / slidesPerView);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
@@ -74,6 +77,12 @@ export function Valores() {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
   }, [isPaused, nextSlide]);
+
+  // Obtener las cards para el slide actual
+  const getCardsForSlide = (slideIndex: number) => {
+    const start = slideIndex * slidesPerView;
+    return esencia.slice(start, start + slidesPerView);
+  };
 
   return (
     <section 
@@ -100,49 +109,67 @@ export function Valores() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Cards Container - Shows 3 on desktop, 1 on mobile */}
+          {/* Cards Container */}
           <div className="overflow-hidden mx-8 md:mx-12">
             <div 
               className="flex transition-transform duration-600 ease-in-out"
               style={{ 
-                transform: `translateX(-${currentIndex * (isMobile ? 100 : 100 / 3)}%)`,
-                width: `${isMobile ? totalSlides * 100 : 300}%`
+                transform: `translateX(-${currentIndex * (100 / totalSlides)}%)`,
+                width: `${totalSlides * 100}%`
               }}
             >
-              {esencia.map((item, index) => (
-                <div 
-                  key={index}
-                  className="px-3"
-                  style={{ width: `${isMobile ? 100 : 33.333}%` }}
-                >
-                  <div className="group relative rounded-2xl overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-1 h-[300px] md:h-[350px] flex flex-col justify-end">
-                    {/* Background Image */}
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                      style={{ backgroundImage: `url('${item.image}')` }}
-                    />
-                    
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
-                    
-                    {/* Content */}
-                    <div className="relative z-10 p-6 md:p-7">
-                      {/* Icon Circle */}
-                      <div className="mb-4 inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#FFD700] group-hover:scale-110 transition-transform duration-300">
-                        <item.icon className="w-5 h-5 text-[#1A1A2E]" />
-                      </div>
-                      
-                      <h3 className="text-xl font-bold mb-2 text-white">
-                        {item.title}
-                      </h3>
-                      
-                      <p className="text-white/80 leading-relaxed text-sm line-clamp-2">
-                        {item.description}
-                      </p>
-                    </div>
+              {Array.from({ length: totalSlides }).map((_, slideIndex) => {
+                const cardsForSlide = getCardsForSlide(slideIndex);
+                return (
+                  <div 
+                    key={slideIndex}
+                    className="flex"
+                    style={{ width: `${100 / totalSlides}%` }}
+                  >
+                    {cardsForSlide.map((item, cardIndex) => {
+                      const actualIndex = slideIndex * slidesPerView + cardIndex;
+                      return (
+                        <div 
+                          key={actualIndex}
+                          className="px-3"
+                          style={{ width: `${100 / slidesPerView}%` }}
+                        >
+                          <div className="group relative rounded-2xl overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-1 h-[300px] md:h-[350px] flex flex-col justify-end">
+                            {/* Background Image */}
+                            <div 
+                              className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                              style={{ backgroundImage: `url('${item.image}')` }}
+                            />
+                            
+                            {/* Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+                            
+                            {/* Content */}
+                            <div className="relative z-10 p-6 md:p-7">
+                              {/* Icon Circle */}
+                              <div className="mb-4 inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#FFD700] group-hover:scale-110 transition-transform duration-300">
+                                <item.icon className="w-5 h-5 text-[#1A1A2E]" />
+                              </div>
+                              
+                              <h3 className="text-xl font-bold mb-2 text-white">
+                                {item.title}
+                              </h3>
+                              
+                              <p className="text-white/80 leading-relaxed text-sm line-clamp-2">
+                                {item.description}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                    {/* Rellenar con espacios vacíos si hay menos cards en el último slide */}
+                    {cardsForSlide.length < slidesPerView && Array.from({ length: slidesPerView - cardsForSlide.length }).map((_, i) => (
+                      <div key={`empty-${i}`} className="px-3" style={{ width: `${100 / slidesPerView}%` }} />
+                    ))}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -166,7 +193,7 @@ export function Valores() {
 
         {/* Dots Indicators */}
         <div className="flex justify-center gap-2 mt-8">
-          {esencia.map((_, index) => (
+          {Array.from({ length: totalSlides }).map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
