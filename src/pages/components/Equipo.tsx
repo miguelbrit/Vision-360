@@ -25,13 +25,13 @@ const roles = [
 
 export function Equipo() {
   return (
-    <section className="relative w-full py-24 px-6 md:px-10 lg:px-20 bg-slate-50 dark:bg-slate-900/20">
+    <section className="relative w-full py-24 px-6 md:px-10 lg:px-20 bg-slate-50 bg-slate-900/20">
       <div className="max-w-[1200px] mx-auto">
         <div className="text-center mb-16">
           <span className="text-primary font-bold tracking-widest text-xs uppercase mb-3 block">
             El Equipo
           </span>
-          <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+          <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 text-white">
             Mentes detrás de la <span className="gradient-text">estrategia</span>
           </h2>
           <p className="mt-4 text-slate-500 text-lg max-w-2xl mx-auto">
@@ -43,7 +43,7 @@ export function Equipo() {
           {roles.map((rol, index) => (
             <div
               key={index}
-              className="group relative bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10"
+              className="group relative bg-white bg-slate-900 p-8 rounded-2xl border border-slate-100 border-slate-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10"
             >
               <div className="absolute inset-0 rounded-2xl border-2 border-transparent transition-all duration-300 group-hover:border-primary/20 pointer-events-none"></div>
               
@@ -51,7 +51,7 @@ export function Equipo() {
                 <rol.icon className="w-8 h-8 text-primary" />
               </div>
               
-              <h3 className="text-xl lg:text-2xl font-bold mb-3 text-slate-900 dark:text-white">
+              <h3 className="text-xl lg:text-2xl font-bold mb-3 text-slate-900 text-white">
                 {rol.title}
               </h3>
               
@@ -63,7 +63,7 @@ export function Equipo() {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-slate-200 dark:bg-slate-800 mx-auto mb-6">
+          <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-slate-200 bg-slate-800 mx-auto mb-6">
             <Users className="w-12 h-12 text-slate-400" />
           </div>
           <p className="text-slate-500">

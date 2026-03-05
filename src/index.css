@@ -16,10 +16,6 @@
   body {
     @apply bg-background-light text-slate-900 font-sans antialiased selection:bg-primary/20 selection:text-primary;
   }
-
-  .dark body {
-    @apply bg-background-dark text-slate-100;
-  }
 }
 
 @layer utilities {
@@ -32,6 +28,6 @@
   }
 
   .glass-panel {
-    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-primary/10 dark:border-primary/20;
+    @apply bg-white/70 backdrop-blur-xl border border-primary/10;
   }
 }

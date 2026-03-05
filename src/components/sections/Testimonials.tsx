@@ -93,13 +93,13 @@ export function Testimonials() {
   const visibleTestimonials = getVisibleTestimonials();
 
   return (
-    <section className="relative w-full py-24 px-6 md:px-10 lg:px-20 bg-white dark:bg-background-dark overflow-hidden">
+    <section className="relative w-full py-24 px-6 md:px-10 lg:px-20 bg-white bg-background-dark overflow-hidden">
       <div className="max-w-[1200px] mx-auto">
         <div className="mb-16 text-center">
           <span className="text-primary font-bold tracking-widest text-xs uppercase mb-3 block">
             Testimonios
           </span>
-          <h2 className="text-slate-900 dark:text-white text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+          <h2 className="text-slate-900 text-white text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
             Lo que dicen <span className="gradient-text">nuestros clientes</span>
           </h2>
           <p className="mt-4 text-slate-500 text-lg max-w-2xl mx-auto">
@@ -112,7 +112,7 @@ export function Testimonials() {
             {visibleTestimonials.map((testimonial) => (
               <div
                 key={testimonial.index}
-                className={`group relative bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 ${
+                className={`group relative bg-slate-50 bg-slate-900 p-8 rounded-2xl border border-slate-100 border-slate-800 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 ${
                   isTransitioning ? "opacity-0" : "opacity-100"
                 }`}
               >
@@ -126,7 +126,7 @@ export function Testimonials() {
                   ))}
                 </div>
 
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 relative z-10">
+                <p className="text-slate-600 text-slate-300 leading-relaxed mb-6 relative z-10">
                   "{testimonial.quote}"
                 </p>
 
@@ -135,7 +135,7 @@ export function Testimonials() {
                     {testimonial.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="text-slate-900 dark:text-white font-bold text-sm">
+                    <h4 className="text-slate-900 text-white font-bold text-sm">
                       {testimonial.name}
                     </h4>
                     <p className="text-slate-500 text-xs">
@@ -149,14 +149,14 @@ export function Testimonials() {
 
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-12 h-12 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-all duration-300 z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-12 h-12 bg-white bg-slate-800 rounded-full shadow-lg flex items-center justify-center text-slate-600 text-slate-300 hover:bg-primary hover:text-white transition-all duration-300 z-10"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-12 h-12 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-all duration-300 z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-12 h-12 bg-white bg-slate-800 rounded-full shadow-lg flex items-center justify-center text-slate-600 text-slate-300 hover:bg-primary hover:text-white transition-all duration-300 z-10"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -173,7 +173,7 @@ export function Testimonials() {
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
                   ? "bg-primary w-8"
-                  : "bg-slate-300 dark:bg-slate-600 hover:bg-primary/50"
+                  : "bg-slate-300 bg-slate-600 hover:bg-primary/50"
               }`}
             />
           ))}

@@ -27,7 +27,7 @@ const services = [
 
 export function ServicesModern() {
   return (
-    <section className="relative w-full py-24 px-6 md:px-10 lg:px-20 bg-white dark:bg-background-dark">
+    <section className="relative w-full py-24 px-6 md:px-10 lg:px-20 bg-white bg-background-dark">
       <div className="max-w-[1200px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left Side - Text Content */}
@@ -35,7 +35,7 @@ export function ServicesModern() {
             <span className="text-primary font-bold tracking-widest text-xs uppercase mb-3 block">
               Servicios
             </span>
-            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-6">
+            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 text-white mb-6">
               Soluciones para hacer crecer <span className="gradient-text">tu negocio</span>
             </h2>
             <p className="text-slate-500 text-lg leading-relaxed mb-8">

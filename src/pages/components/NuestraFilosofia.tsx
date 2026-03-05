@@ -43,7 +43,7 @@ export function NuestraFilosofia() {
           {filosofias.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20"
+              className="group relative bg-white bg-slate-900 p-8 rounded-2xl border border-slate-200 border-slate-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20"
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               
@@ -52,11 +52,11 @@ export function NuestraFilosofia() {
                   <item.icon className="w-7 h-7 text-white" />
                 </div>
                 
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-slate-900 dark:text-white">
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-slate-900 text-white">
                   {item.title}
                 </h3>
                 
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
+                <p className="text-slate-600 text-slate-300 leading-relaxed text-lg">
                   {item.description}
                 </p>
               </div>
