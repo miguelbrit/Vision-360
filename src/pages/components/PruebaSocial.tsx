@@ -41,7 +41,7 @@ export function PruebaSocial() {
           {casos.map((caso, index) => (
             <div
               key={index}
-              className="group relative bg-white bg-slate-900 p-8 rounded-2xl border border-slate-200 border-slate-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/20"
+              className="group relative bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/20"
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               
@@ -55,11 +55,11 @@ export function PruebaSocial() {
                   </span>
                 </div>
                 
-                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-slate-900 text-white">
+                <h3 className="text-xl lg:text-2xl font-bold mb-3 text-slate-900 dark:text-white">
                   {caso.title}
                 </h3>
                 
-                <p className="text-slate-600 text-slate-300 leading-relaxed text-lg mb-4">
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg mb-4">
                   {caso.description}
                 </p>
                 

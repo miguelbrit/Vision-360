@@ -50,7 +50,7 @@ const projects = [
 
 export function Portfolio() {
   return (
-    <section id="casos" className="relative w-full py-24 px-6 md:px-20 lg:px-40 bg-white bg-background-dark">
+    <section id="casos" className="relative w-full py-24 px-6 md:px-20 lg:px-40 bg-white dark:bg-background-dark">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="mb-20 space-y-4">
@@ -58,7 +58,7 @@ export function Portfolio() {
             <Sparkles className="w-4 h-4" />
             Casos de Éxito
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 text-white max-w-2xl leading-[1.1]">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white max-w-2xl leading-[1.1]">
             Resultados que <span className="text-primary">hablan por sí mismos</span>
           </h2>
           <p className="text-slate-500 text-lg max-w-xl font-medium">
@@ -75,7 +75,7 @@ export function Portfolio() {
                 index % 2 !== 0 ? "md:mt-16" : ""
               }`}
             >
-              <div className="relative overflow-hidden rounded-2xl bg-slate-50 bg-slate-900/50 p-8 md:p-12 transition-all duration-500 hover:-translate-y-2 shadow-xl shadow-primary/5">
+              <div className="relative overflow-hidden rounded-2xl bg-slate-50 dark:bg-slate-900/50 p-8 md:p-12 transition-all duration-500 hover:-translate-y-2 shadow-xl shadow-primary/5">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 
                 <div
@@ -99,7 +99,7 @@ export function Portfolio() {
                     {project.year}
                   </span>
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold text-slate-900 text-white">
+                <h3 className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-white">
                   {project.title}
                 </h3>
                 <p className="text-slate-500 font-medium">

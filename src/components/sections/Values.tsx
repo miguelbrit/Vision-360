@@ -30,14 +30,14 @@ const values = [
 
 export function Values() {
   return (
-    <section className="relative w-full py-24 px-6 md:px-10 lg:px-20 bg-slate-50 bg-slate-900/20">
+    <section className="relative w-full py-24 px-6 md:px-10 lg:px-20 bg-slate-50 dark:bg-slate-900/20">
       <div className="max-w-[1200px] mx-auto">
         {/* Section Header */}
         <div className="mb-16 text-center">
           <span className="text-primary font-bold tracking-widest text-xs uppercase mb-3 block">
             Nuestros Valores
           </span>
-          <h2 className="text-slate-900 text-white text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+          <h2 className="text-slate-900 dark:text-white text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
             Los pilares que nos <span className="gradient-text">definen</span>
           </h2>
           <p className="mt-4 text-slate-500 text-lg max-w-2xl mx-auto">
@@ -50,7 +50,7 @@ export function Values() {
           {values.map((value, index) => (
             <div
               key={index}
-              className="group relative bg-white bg-slate-900 p-6 rounded-2xl border border-slate-100 border-slate-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 text-center"
+              className="group relative bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 text-center"
             >
               <div className="absolute inset-0 rounded-2xl border-2 border-transparent transition-all duration-300 group-hover:border-primary/20 pointer-events-none"></div>
               
@@ -58,7 +58,7 @@ export function Values() {
                 <value.icon className="w-6 h-6 text-primary" />
               </div>
               
-              <h3 className="text-slate-900 text-white text-lg font-bold mb-2">
+              <h3 className="text-slate-900 dark:text-white text-lg font-bold mb-2">
                 {value.title}
               </h3>
               
