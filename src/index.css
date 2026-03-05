@@ -12,6 +12,9 @@
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Disable dark mode completely - always use light mode */
+@variant dark (&:where(.dark, .dark *));
+
 @layer base {
   body {
     @apply bg-background-light text-slate-900 font-sans antialiased selection:bg-primary/20 selection:text-primary;
