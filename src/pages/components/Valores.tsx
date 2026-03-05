@@ -143,46 +143,60 @@ export function Valores() {
             <div 
               className="flex transition-transform duration-600 ease-in-out"
               style={{ 
-                transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
-                width: `${(esencia.length / cardsPerView) * 100}%`
+                transform: `translateX(-${currentIndex * 100}%)`,
+                width: `${totalSlides * 100}%`
               }}
               role="group"
               aria-label={`Slide ${currentIndex + 1} de ${totalSlides}`}
             >
-              {esencia.map((item, index) => (
-                <div 
-                  key={index}
-                  className="px-3"
-                  style={{ width: `${100 / esencia.length}%` }}
-                >
-                  <div className="group relative rounded-2xl overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-1 h-[300px] flex flex-col justify-end">
-                    {/* Background Image */}
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                      style={{ backgroundImage: `url('${item.image}')` }}
-                    />
-                    
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
-                    
-                    {/* Content */}
-                    <div className="relative z-10 p-6 md:p-7">
-                      {/* Icon Circle */}
-                      <div className={`mb-4 inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#FFD700] group-hover:scale-110 transition-transform duration-300`}>
-                        <item.icon className="w-5 h-5 text-[#1A1A2E]" />
-                      </div>
-                      
-                      <h3 className="text-xl font-bold mb-2 text-white">
-                        {item.title}
-                      </h3>
-                      
-                      <p className="text-white/80 leading-relaxed text-sm line-clamp-2">
-                        {item.description}
-                      </p>
-                    </div>
+              {Array.from({ length: totalSlides }).map((_, slideIndex) => {
+                const cardsForSlide = getCardsForSlide(slideIndex);
+                return (
+                  <div 
+                    key={slideIndex}
+                    className="flex"
+                    style={{ width: `${100 / totalSlides}%` }}
+                  >
+                    {cardsForSlide.map((item, cardIndex) => {
+                      const originalIndex = slideIndex * cardsPerView + cardIndex;
+                      return (
+                        <div 
+                          key={originalIndex}
+                          className="px-3"
+                          style={{ width: `${100 / cardsPerView}%` }}
+                        >
+                          <div className="group relative rounded-2xl overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-1 h-[300px] flex flex-col justify-end">
+                            {/* Background Image */}
+                            <div 
+                              className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                              style={{ backgroundImage: `url('${item.image}')` }}
+                            />
+                            
+                            {/* Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+                            
+                            {/* Content */}
+                            <div className="relative z-10 p-6 md:p-7">
+                              {/* Icon Circle */}
+                              <div className={`mb-4 inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#FFD700] group-hover:scale-110 transition-transform duration-300`}>
+                                <item.icon className="w-5 h-5 text-[#1A1A2E]" />
+                              </div>
+                              
+                              <h3 className="text-xl font-bold mb-2 text-white">
+                                {item.title}
+                              </h3>
+                              
+                              <p className="text-white/80 leading-relaxed text-sm line-clamp-2">
+                                {item.description}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
